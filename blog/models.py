@@ -30,6 +30,6 @@ class Post(models.Model):
     # 文章摘要
     # 指定 CharField 的 blank=True 参数值后就可以允许空值了。
     excerpt = models.CharField(max_length=200, blank=True)
-    category = models.ForeignKey(Category)
+    category = models.ForeignKey(Category, on_delete=models.SET('未分类'))
     tags = models.ManyToManyField(Tag, blank=True)
-    author = models.ForeignKey(User)
+    author = models.ForeignKey(User, on_delete=models.PROTECT)
